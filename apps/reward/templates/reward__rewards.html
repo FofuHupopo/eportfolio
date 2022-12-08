@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+    .reward-photo {
+      height: 100px;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+  {% for reward in rewards %}
+    <div class="reward">
+      <p>Название:</p>
+      <p>{{ reward.name }}</p>
+      <br>
+      <p>Описание:</p>
+      <p>{{ reward.description }}</p>
+      <br>
+      <p>Тип:</p>
+      <p>{{ reward.type.name }}</p>
+      <br>
+      <p>Категории:</p>
+      {% for category in reward.categories.all %}
+        <p>{{ category.name }}</p>
+      {% endfor %}
+      <img src="{{ reward.photo.url }}" class="reward-photo" alt="">
+    </div>
+    <br>
+    <hr>
+    <br>
+  {% endfor %}
+{% endblock %}

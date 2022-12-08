@@ -1,0 +1,27 @@
+{% extends "auth__base.html" %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block body %}
+    <div class="login">
+        <div class="header">
+            <h1>
+                Портфолио
+            </h1>
+        </div>
+        <div class="login-wrapper">
+            <div class="login-block">
+                <h2>Вход</h2>
+                <form action="" class="login-form" method="post">
+                    {% csrf_token %}
+                    <input name="username" placeholder="Логин / Почта / Телефон" class="input" type="text">
+                    <input name="password" placeholder="Пароль" class="input" type="password">
+                    <a href="{% url 'registration' %}"><p class="no-account">У меня нет аккаунта</p></a>
+                    <input value="Вход" class="button" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

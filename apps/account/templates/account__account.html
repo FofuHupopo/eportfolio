@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+    <div class="main-information wd-25 hg-100">
+        <p class="id-info">ID: {{ user.pk }}</p>
+        <form action="{% url 'update_information' %}" method="post" class="main-information-form hg-100">
+            <h2>
+                Основная информация
+            </h2>
+
+
+            <div class="main-information-blocks">
+                {% csrf_token %}
+                <div class="main-information-block">
+                    <label for="login">Логин:</label>
+                    <input id="login" name="login" class="input" value="{{ user.login }}" type="text">
+                </div>
+                <div class="main-information-block">
+                    <label for="email">Почта:</label>
+                    <input id="email" name="email" class="input" value="{{ user.email }}" type="email">
+                </div>
+                <div class="main-information-block">
+                    <label for="phone">Номер телефона:</label>
+                    <input id="phone" name="phone" class="input" value="{{ user.phone }}" type="text">
+                </div>
+            </div>
+
+            <input value="Сохранить" type="submit" class="button">
+        </form>
+    </div>
+<!--    <p>{{ user.firstname }}</p>-->
+<!--    <p>{{ user.lastname }}</p>-->
+    <a href="{% url 'logout' %}"><input type="submit" value="Выйти" class="button"></a>
+{% endblock %}

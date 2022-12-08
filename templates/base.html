@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/clear.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/widgets.css' %}">
+    {% block styles %}
+    {% endblock %}
+    <title>
+        {% block title %}Электронное портфолио{% endblock %}
+    </title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <div class="wrapper">
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>

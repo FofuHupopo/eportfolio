@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/core.css' %}">
+{% endblock %}
+
+{% block title %}
+Информация
+{% endblock %}
+
+{% block body %}
+  <div>
+    <p class="list-title">Список моих классов:</p>
+      {% for class in classes %}
+      <hr>
+        <p class="class-name">{{ class.name }}</p>
+
+        <a href="{% url 'detail_class' class.pk %}"><input type="submit" name="" value="Подробнее"></a>
+      {% endfor %}
+  </div>
+{% endblock %}

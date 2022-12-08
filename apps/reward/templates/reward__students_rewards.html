@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/rewards.css' %}">
+{% endblock %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+  <p class="student">{{ student.firstname }} {{ student.lastname }}</p>
+  <div class="parent">
+    {% for reward in rewards %}
+      <div class="reward">
+        <img src="{{ reward.photo.url }}" class="reward-photo" alt="">
+        <div class="reward-info">
+          <p class="title">{{ reward.name }}</p>
+          <p class="indent">{{ reward.description }}</p>
+          <p class="weight">Тип:</p>
+          <p class="indent">{{ reward.type.name }}</p>
+          <p class="weight">Категории:</p>
+          {% for category in reward.categories.all %}
+            <p class="indent">{{ category.name }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <a href="{% url 'add-reward-pk' student.pk %}"><input type="submit" class="button" value="Добавить награду"></a>
+  <br>
+  <a href="{% url 'detail_class' class_pk %}"><input type="submit" class="button" value="Назад"></a>
+{% endblock %}

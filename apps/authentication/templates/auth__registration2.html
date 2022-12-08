@@ -1,0 +1,46 @@
+{% extends "auth__base.html" %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block body %}
+    <div class="login">
+        <div class="header">
+            <h1>
+                Портфолио
+            </h1>
+        </div>
+        <div class="login-wrapper">
+            <div class="login-block">
+                <h2>Регистрация</h2>
+                <form action="" class="login-form" method="post">
+                    {% csrf_token %}
+                    <input name="firstname" placeholder="Имя" class="input" type="text">
+                    <input name="lastname" placeholder="Фамилия" class="input" type="text">
+                    <input name="phone" placeholder="Номер телефона" class="input" type="text">
+
+                    <div class="role-choice">
+                        <input type="radio" id="contactChoice1"
+                            name="role" value="teacher">
+                        <label for="contactChoice1">Учитель</label>
+                    </div>
+
+                    <div class="role-choice">
+                        <input type="radio" id="contactChoice2"
+                            name="role" value="parent">
+                        <label for="contactChoice2">Родитель</label>
+                    </div>
+
+                    <div class="role-choice">
+                        <input type="radio" id="contactChoice3"
+                             name="role" value="student">
+                        <label for="contactChoice3">Ученик</label>
+                    </div>
+
+                    <input value="РЕГИСТРАЦИЯ" class="button" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

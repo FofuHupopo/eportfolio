@@ -1,0 +1,24 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/clear.css' %}">
+    <link rel="stylesheet" href="{% static 'css/widgets.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <title>
+        {% block title %}
+        Авторизация
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div class="wrapper">
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>

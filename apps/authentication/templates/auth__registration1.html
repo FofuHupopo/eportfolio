@@ -1,0 +1,37 @@
+{% extends "auth__base.html" %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block body %}
+    <div class="login">
+        <div class="header">
+            <h1>
+                Портфолио
+            </h1>
+        </div>
+        <div class="login-wrapper">
+            <div class="login-block">
+                <h2>Регистрация</h2>
+                {% for field, error in errors.items %}
+                    {% for error_message in error %}
+                    <p>{{ field }}:</p>
+                    <div class="error-message">
+                        <p>{{ error_message }}</p>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+                <form action="" class="login-form" method="post">
+                    {% csrf_token %}
+                    <input name="login" placeholder="Логин" class="input" type="text">
+                    <input name="email" placeholder="Почта" class="input" type="text">
+                    <input name="password1" placeholder="Пароль" class="input" type="password">
+                    <input name="password2" placeholder="Повторите пароль" class="input" type="password">
+                    <a href="{% url 'login' %}"><p class="no-account">У меня уже есть аккаунт</p></a>
+                    <input value="ДАЛЕЕ" class="button" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
