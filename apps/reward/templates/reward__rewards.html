@@ -2,37 +2,30 @@
 {% load static %}
 
 {% block styles %}
-<style>
-    .reward-photo {
-      height: 100px;
-    }
-  </style>
+<link rel="stylesheet" href="{% static 'css/rewards.css' %}">
 {% endblock %}
 
 {% block title %}
-Профиль
+список моих наград
 {% endblock %}
 
 {% block body %}
+<a href="{% url 'add-reward-pk' user.pk %}"><input type="submit" class="button" value="Добавить награду"></a>
+<div class="parent">
   {% for reward in rewards %}
     <div class="reward">
-      <p>Название:</p>
-      <p>{{ reward.name }}</p>
-      <br>
-      <p>Описание:</p>
-      <p>{{ reward.description }}</p>
-      <br>
-      <p>Тип:</p>
-      <p>{{ reward.type.name }}</p>
-      <br>
-      <p>Категории:</p>
-      {% for category in reward.categories.all %}
-        <p>{{ category.name }}</p>
-      {% endfor %}
       <img src="{{ reward.photo.url }}" class="reward-photo" alt="">
+      <div class="reward-info">
+        <p class="title">{{ reward.name }}</p>
+        <p class="indent">{{ reward.description }}</p>
+        <p class="weight">Тип:</p>
+        <p class="indent">{{ reward.type.name }}</p>
+        <p class="weight">Категории:</p>
+        {% for category in reward.categories.all %}
+          <p class="indent">{{ category.name }}</p>
+        {% endfor %}
+      </div>
     </div>
-    <br>
-    <hr>
-    <br>
   {% endfor %}
 {% endblock %}
+
